@@ -46,7 +46,7 @@ func(rtb RenderingToBorder)Render(context ScreenContext)error{
         y = sort.MinF(context.DomainRectangle.Min.Y, context.DomainRectangle.Max.Y) - sort.MinF(context.SelfRectangle.Min.Y, context.SelfRectangle.Max.Y)
       }
       case ToBottomBorder : {
-        y = sort.MaxF(context.SelfRectangle.Min.Y, context.SelfRectangle.Max.Y) - sort.MaxF(context.DomainRectangle.Min.Y, context.DomainRectangle.Max.Y)
+        y = sort.MaxF(context.DomainRectangle.Min.Y, context.DomainRectangle.Max.Y) - sort.MaxF(context.SelfRectangle.Min.Y, context.SelfRectangle.Max.Y)
       }
       default : {
         y = sort.MinF(context.SelfRectangle.Min.Y, context.SelfRectangle.Max.Y) - sort.MinF(context.DomainRectangle.Min.Y, context.DomainRectangle.Max.Y)
