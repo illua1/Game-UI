@@ -14,7 +14,7 @@ func NewFrame(first, seccond Rendering, os bool, factor float64)Rendering{
   return RenderingFrame{[2]Rendering{first, seccond}, os, factor}
 }
 
-func(rf RenderingFrame)Render(context ScreenContext)(err error){
+func(rf RenderingFrame)Render(context ScreenContext)error{
   orig_DomainRectangle := context.DomainRectangle
   
   var (
@@ -56,5 +56,5 @@ func(rf RenderingFrame)Render(context ScreenContext)(err error){
     }
   }
   
-  return err
+  return nil
 }
