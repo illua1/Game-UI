@@ -2,6 +2,7 @@ package UI
 
 import (
   "fmt"
+  "errors"
 )
 
 type RenderingLayer struct{
@@ -17,10 +18,10 @@ func(rl RenderingLayer)Render(context ScreenContext)error{
     if rl.Layers[i] != nil {
       err := rl.Layers[i].Render(context)
       if err != nil {
-        return fmt.Errorf("RenderingLayer->",err)
+        return errors.New(fmt.Sprint("RenderingLayer->",err))
       }
     }else{
-      return fmt.Errorf("RenderingLayer: Nil Layer: ", i)
+      return errors.New(fmt.Sprint("RenderingLayer: Nil Layer: ", i))
     }
   }
   return nil

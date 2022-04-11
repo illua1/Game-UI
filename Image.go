@@ -1,6 +1,7 @@
 package UI
 
 import (
+  "fmt"
   "errors"
 	"github.com/hajimehoshi/ebiten/v2"
   sort "github.com/illua1/go-helpful/Sort"
@@ -22,7 +23,7 @@ func(ri RenderingImage)Render(context ScreenContext) error {
     context.Screen.DrawImage(ri.image, context.Op)
     return nil
   }else{
-    return errors.New("RenderingImage: Nil Image")
+    return errors.New(fmt.Sprint("RenderingImage: Nil Image"))
   }
 }
 

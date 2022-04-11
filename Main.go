@@ -81,3 +81,10 @@ func Rect_Mull_Centre[T values.Values](a image.Rectangle, b T)image.Rectangle{
 func Lerp[T, F values.Values](a, b T, f F)T{
   return a+T(F(b-a)*f)
 }
+
+func Rect_Lerp[F values.Values](r image.Rectangle, x, y F)image.Point{
+  return image.Point{
+    Lerp[int, F](r.Min.X, r.Max.X, x),
+    Lerp[int, F](r.Min.Y, r.Max.Y, y),
+  }
+}

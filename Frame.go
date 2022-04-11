@@ -3,6 +3,7 @@ package UI
 import (
   "image"
   "fmt"
+  "errors"
 )
 
 type RenderingFrame struct{
@@ -37,28 +38,23 @@ func(rf RenderingFrame)Render(context ScreenContext)(err error){
       
       if i == 0 {
         p1 = orig_DomainRectangle.Min
-        p2 = image.Point{
-          Lerp(orig_DomainRectangle.Min.X, orig_DomainRectangle.Max.X, factors_x[i]),
-          Lerp(orig_DomainRectangle.Min.Y, orig_DomainRectangle.Max.Y, factors_y[i]),
-        }
+        p2 = Rect_Lerp(orig_DomainRectangle, factors_x[i], factors_y[i])
       }else{
-        p1 = image.Point{
-          Lerp(orig_DomainRectangle.Min.X, orig_DomainRectangle.Max.X, factors_x[i]),
-          Lerp(orig_DomainRectangle.Min.Y, orig_DomainRectangle.Max.Y, factors_y[i]),
-        }
+        p1 = Rect_Lerp(orig_DomainRectangle, factors_x[i], factors_y[i])
         p2 = orig_DomainRectangle.Max
       }
       
       context.DomainRectangle = image.Rectangle{p1,p2}
+      context.SelfRectangle = context.DomainRectangle
       
       err := rf.Frames[i].Render(context)
       
       if err != nil {
-        return fmt.Errorf("NewFrame: ", i,"-> ", err)
+        return errors.New(fmt.Sprint("NewFrame: ", i," -> ", err))
       }
       
     }else{
-      return fmt.Errorf("NewFrame: Nil Frame: ", i)
+      return errors.New(fmt.Sprint("NewFrame: Nil Frame: ", i))
     }
   }
   
