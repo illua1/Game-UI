@@ -12,6 +12,7 @@ type RenderingImage struct {
 }
 
 func(ri RenderingImage)Render(context ScreenContext) error {
+  fmt.Println("V-1")
   if ri.image != nil {
     x, y := ri.image.Size()
     context.Op.GeoM = ebiten.GeoM{}
