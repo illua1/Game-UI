@@ -1,6 +1,7 @@
 package UI
 
 import (
+  "fmt"
   "image"
 	"github.com/hajimehoshi/ebiten/v2"
   sort "github.com/illua1/go-helpful/Sort"
@@ -87,4 +88,20 @@ func Rect_Lerp[F values.Values](r image.Rectangle, x, y F)image.Point{
     Lerp[int, F](r.Min.X, r.Max.X, x),
     Lerp[int, F](r.Min.Y, r.Max.Y, y),
   }
+}
+
+type RenderError string
+
+func NewRenderError(text ...interface{})*RenderError{
+  var v = RenderError(fmt.Sprint(text))
+  return &v
+}
+
+func RenderErrorLocation(err error, i ...interface{})*RenderError{
+  var v = RenderError(fmt.Sprint(i) + " -> " + err.Error())
+  return &v
+}
+
+func(re *RenderError)Error()string{
+  return string(*re)
 }

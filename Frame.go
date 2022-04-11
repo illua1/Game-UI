@@ -2,8 +2,6 @@ package UI
 
 import (
   "image"
-  "fmt"
-  "errors"
 )
 
 type RenderingFrame struct{
@@ -50,11 +48,11 @@ func(rf RenderingFrame)Render(context ScreenContext)(err error){
       err := rf.Frames[i].Render(context)
       
       if err != nil {
-        return errors.New(fmt.Sprint("NewFrame: ", i," -> ", err))
+        return RenderErrorLocation(err, "NewFrame: ", i)
       }
       
     }else{
-      return errors.New(fmt.Sprint("NewFrame: Nil Frame: ", i))
+      return NewRenderError("NewFrame: Nil Frame: ", i)
     }
   }
   
