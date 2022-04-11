@@ -22,8 +22,7 @@ func(rb RenderingBound)Render(context ScreenContext)error{
       centre.Sub(Size_),
       centre.Add(Size_),
     }
-    err := rb.InBound.Render(context)
-    if err != nil {
+    if err := rb.InBound.Render(context); err != nil {
       RenderErrorLocation(err, "RenderingBound")
     }else{
       return nil

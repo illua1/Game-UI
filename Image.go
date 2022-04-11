@@ -6,19 +6,19 @@ import (
 )
 
 type RenderingImage struct {
-  image *ebiten.Image
+  Image *ebiten.Image
 }
 
 func(ri RenderingImage)Render(context ScreenContext) error {
-  if ri.image != nil {
-    x, y := ri.image.Size()
+  if ri.Image != nil {
+    x, y := ri.Image.Size()
     context.Op.GeoM = ebiten.GeoM{}
     context.Op.GeoM.Scale(float64(context.SelfRectangle.Dx())/float64(x), float64(context.SelfRectangle.Dy())/float64(y))
     context.Op.GeoM.Translate(
       float64(sort.MinF(context.SelfRectangle.Min.X,context.SelfRectangle.Max.X)),
       float64(sort.MinF(context.SelfRectangle.Min.Y,context.SelfRectangle.Max.Y)),
     )
-    context.Screen.DrawImage(ri.image, context.Op)
+    context.Screen.DrawImage(ri.Image, context.Op)
     return nil
   }else{
     return NewRenderError("RenderingImage: Nil Image")

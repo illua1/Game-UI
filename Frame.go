@@ -45,16 +45,14 @@ func(rf RenderingFrame)Render(context ScreenContext)error{
       context.DomainRectangle = image.Rectangle{p1,p2}
       context.SelfRectangle = context.DomainRectangle
       
-      err := rf.Frames[i].Render(context)
       
-      if err != nil {
+      
+      if err := rf.Frames[i].Render(context); err != nil {
         return RenderErrorLocation(err, "NewFrame: ", i)
       }
-      
     }else{
       return NewRenderError("NewFrame: Nil Frame: ", i)
     }
   }
-  
   return nil
 }
