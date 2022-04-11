@@ -5,17 +5,17 @@ import (
   sort "github.com/illua1/go-helpful/Sort"
 )
 
-type RenderingMinSize struct{
+type RenderingMaxSize struct{
   InMax Rendering
 }
 
-func NewMinSize(in Rendering)Rendering{
-  return RenderingMinSize{in}
+func NewMaxSize(in Rendering)Rendering{
+  return RenderingMaxSize{in}
 }
 
-func(rms RenderingMinSize)Render(context ScreenContext)error{
+func(rms RenderingMaxSize)Render(context ScreenContext)error{
   if rms.InMax != nil {
-    min := sort.MinF(context.DomainRectangle.Dx(), context.DomainRectangle.Dy())/2
+    min := sort.MaxF(context.DomainRectangle.Dx(), context.DomainRectangle.Dy())/2
     centre := Rect_Centre(context.SelfRectangle)
     context.SelfRectangle = image.Rectangle{
         centre.Sub(
@@ -26,10 +26,10 @@ func(rms RenderingMinSize)Render(context ScreenContext)error{
         ),
       }
     if err := rms.InMax.Render(context); err != nil {
-      return RenderErrorLocation(err, "RenderingMinSize")
+      return RenderErrorLocation(err, "RenderingMaxSize")
     }else{
       return nil
     }
   }
-  return NewRenderError("RenderingMinSize:  Nil InMax")
+  return NewRenderError("RenderingMaxSize:  Nil InMax")
 }
