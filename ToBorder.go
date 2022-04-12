@@ -56,7 +56,7 @@ func(rtb RenderingToBorder)Render(context ScreenContext)error{
     }
     context.SelfRectangle = image.Rectangle{
       image.Point{x, y},
-      image.Point{x, y}.Add(
+      image.Point{x, y}.Sub(
         image.Point{
           context.SelfRectangle.Dx(),
           context.SelfRectangle.Dy(),
