@@ -19,8 +19,6 @@ func(rs RenderingSet)Render(context ScreenContext)error{
     if rs.InSet[i] != nil {
       if err := rs.InSet[i].Render(context); err != nil {
         return RenderErrorLocation(err, "RenderingSet: ", i)
-      }else{
-        return nil
       }
       v, _ := slise.GetLast[int](rs.Offsets, i)
       if rs.Direction_flag {
