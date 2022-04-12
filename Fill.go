@@ -22,6 +22,7 @@ func NewFill[V value.Values](r, g, b, a V)RenderingFill{
 }
 
 func(rf RenderingFill)Render(context ScreenContext)error{
-  ebiten.NewImageFromImage(context.Screen.SubImage(context.SelfRectangle)).Fill(rf.Color)
+  //ebiten.NewImageFromImage(context.Screen.SubImage(context.SelfRectangle)).Fill(rf.Color)
+  context.Screen.SubImage(context.SelfRectangle).(*ebiten.Image).Fill(rf.Color)
   return nil
 }
