@@ -26,8 +26,8 @@ func(rf RenderingFill)Render(context ScreenContext)error{
     context.Screen,
     float64(context.SelfRectangle.Min.X),
     float64(context.SelfRectangle.Min.Y),
-    float64(context.SelfRectangle.Max.X),
-    float64(context.SelfRectangle.Max.Y),
+    float64(context.SelfRectangle.Max.X-context.SelfRectangle.Min.X),
+    float64(context.SelfRectangle.Max.Y-context.SelfRectangle.Min.Y),
     rf.Color,
   )
   //context.Screen.SubImage(context.SelfRectangle).(*ebiten.Image).Fill(rf.Color)
