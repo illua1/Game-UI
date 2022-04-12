@@ -9,7 +9,7 @@ type RenderingMaxSize struct{
   InMax Rendering
 }
 
-func NewMaxSize(in Rendering)Rendering{
+func NewMaxSize(in Rendering)RenderingMaxSize{
   return RenderingMaxSize{in}
 }
 

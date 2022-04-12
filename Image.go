@@ -9,6 +9,10 @@ type RenderingImage struct {
   Image *ebiten.Image
 }
 
+func NewImage(img *ebiten.Image)RenderingImage{
+  return RenderingImage{img}
+}
+
 func(ri RenderingImage)Render(context ScreenContext) error {
   if ri.Image != nil {
     x, y := ri.Image.Size()
@@ -23,8 +27,4 @@ func(ri RenderingImage)Render(context ScreenContext) error {
   }else{
     return NewRenderError("RenderingImage: Nil Image")
   }
-}
-
-func NewImage(img *ebiten.Image)Rendering{
-  return RenderingImage{img}
 }

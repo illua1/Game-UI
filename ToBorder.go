@@ -21,7 +21,7 @@ type RenderingToBorder struct{
   LR_flag, TB_flag toBorder
 }
 
-func NewToBorder(in Rendering, lr, tb toBorder)Rendering{
+func NewToBorder(in Rendering, lr, tb toBorder)RenderingToBorder{
   return RenderingToBorder{in, lr, tb}
 }
 

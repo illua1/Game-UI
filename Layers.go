@@ -7,7 +7,7 @@ type RenderingLayer struct{
   Layers []Rendering
 }
 
-func NewLayer(in ...Rendering)Rendering{
+func NewLayer(in ...Rendering)RenderingLayer{
   return RenderingLayer{in}
 }
 

@@ -9,7 +9,7 @@ type RenderingBound struct{
   Size image.Point
 }
 
-func NewBound(in Rendering, x, y int)Rendering{
+func NewBound(in Rendering, x, y int)RenderingBound{
   return RenderingBound{in, image.Point{x, y}}
 }
 

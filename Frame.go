@@ -10,7 +10,7 @@ type RenderingFrame struct{
   factor float64
 }
 
-func NewFrame(first, seccond Rendering, os bool, factor float64)Rendering{
+func NewFrame(first, seccond Rendering, os bool, factor float64)RenderingFrame{
   return RenderingFrame{[2]Rendering{first, seccond}, os, factor}
 }
 
