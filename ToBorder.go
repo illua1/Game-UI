@@ -54,7 +54,15 @@ func(rtb RenderingToBorder)Render(context ScreenContext)error{
         y /= 2
       }
     }
-    context.SelfRectangle = context.SelfRectangle.Add(image.Point{x, y})
+    context.SelfRectangle = image.Rectangle{
+      image.Point{x, y},
+      image.Point{x, y}.Add(
+        image.Point{
+          context.SelfRectangle.Dx(),
+          context.SelfRectangle.Dy(),
+        },
+      ),
+    }
     if err := rtb.ToBorder.Render(context); err != nil {
       return RenderErrorLocation(err, "RenderingToBorder")
     }else{

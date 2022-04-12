@@ -4,6 +4,7 @@ import (
   "image"
   slise "github.com/illua1/go-helpful/Slise"
 )
+
 type RenderingSet struct{
   InSet []Rendering
   Direction_flag bool
