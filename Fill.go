@@ -2,7 +2,7 @@ package UI
 
 import (
   "image/color"
-  "github.com/hajimehoshi/ebiten/v2"
+  "github.com/hajimehoshi/ebiten/v2/ebitenutil"
   value "github.com/illua1/go-helpful"
 )
 
@@ -22,7 +22,14 @@ func NewFill[V value.Values](r, g, b, a V)RenderingFill{
 }
 
 func(rf RenderingFill)Render(context ScreenContext)error{
-  //ebiten.NewImageFromImage(context.Screen.SubImage(context.SelfRectangle)).Fill(rf.Color)
-  context.Screen.SubImage(context.SelfRectangle).(*ebiten.Image).Fill(rf.Color)
+  ebitenutil.DrawRect(
+    context.Screen,
+    float64(context.SelfRectangle.Min.X),
+    float64(context.SelfRectangle.Min.Y),
+    float64(context.SelfRectangle.Max.X),
+    float64(context.SelfRectangle.Max.Y),
+    rf.Color,
+  )
+  //context.Screen.SubImage(context.SelfRectangle).(*ebiten.Image).Fill(rf.Color)
   return nil
 }
