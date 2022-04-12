@@ -13,7 +13,7 @@ type RenderingText struct{
 
 type TextToRender struct{
   Location image.Point
-  Font font.Face
+  Font *font.Face
   Str string
   Color color.Color
 }
@@ -25,7 +25,7 @@ func NewText(lines ...TextToRender)RenderingText{
 func(rt RenderingText)Render(context ScreenContext)error{
   for i := range rt.Lines{
     f := context.SelfRectangle.Min.Add(rt.Lines[i].Location)
-    text.Draw(context.Screen, rt.Lines[i].Str, rt.Lines[i].Font, f.X, f.Y, rt.Lines[i].Color)
+    text.Draw(context.Screen, rt.Lines[i].Str, *(rt.Lines[i].Font), f.X, f.Y, rt.Lines[i].Color)
   }
   return nil
 }
