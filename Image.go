@@ -3,7 +3,6 @@ package UI
 import (
 	"github.com/hajimehoshi/ebiten/v2"
   sort "github.com/illua1/go-helpful/Sort"
-  "fmt"
 )
 
 type RenderingImage struct {
@@ -15,7 +14,6 @@ func NewImage(img *ebiten.Image)RenderingImage{
 }
 
 func(ri RenderingImage)Render(context ScreenContext) error {
-  fmt.Println("-v2")
   if ri.Image != nil {
     x, y := ri.Image.Size()
     context.Op.GeoM = ebiten.GeoM{}
